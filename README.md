@@ -1,4 +1,4 @@
-# Shaarli Custom Toolbar Link
+# AE Shaarli Custom Toolbar Link
 
 A small configurable plugin for Shaarli that adds a custom hyperlink to the top toolbar without modifying Shaarli core files or theme templates.
 
