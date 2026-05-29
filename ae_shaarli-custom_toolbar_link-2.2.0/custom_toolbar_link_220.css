@@ -1,0 +1,297 @@
+/*
+ * AE Custom Toolbar Link for Shaarli v0.16.x
+ * Version 2.2.0
+ * Fabio Lichinchi (mukka) - https://alterego.cc/
+ *
+ * The link is rendered by Shaarli's native toolbar placeholder, then moved by JS
+ * according to a semantic position.
+ */
+
+#custom-toolbar-link {
+    white-space: nowrap;
+}
+
+/* Colour/style preset: theme. Keep current Shaarli theme styling; only avoid wrapping. */
+#custom-toolbar-link.custom-toolbar-link-style-theme {
+    white-space: nowrap;
+}
+
+/* Auto contrast. JS adds either .custom-toolbar-link-auto-light-bg or .custom-toolbar-link-auto-dark-bg. */
+#custom-toolbar-link.custom-toolbar-link-style-auto.custom-toolbar-link-auto-dark-bg,
+#custom-toolbar-link.custom-toolbar-link-style-auto.custom-toolbar-link-auto-dark-bg:link,
+#custom-toolbar-link.custom-toolbar-link-style-auto.custom-toolbar-link-auto-dark-bg:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-auto.custom-toolbar-link-auto-light-bg,
+#custom-toolbar-link.custom-toolbar-link-style-auto.custom-toolbar-link-auto-light-bg:link,
+#custom-toolbar-link.custom-toolbar-link-style-auto.custom-toolbar-link-auto-light-bg:visited {
+    color: #111111 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-auto:hover,
+#custom-toolbar-link.custom-toolbar-link-style-auto:focus {
+    text-decoration: none !important;
+    background: rgba(127, 127, 127, 0.18) !important;
+}
+
+/* Solid readable text colours. */
+#custom-toolbar-link.custom-toolbar-link-style-white,
+#custom-toolbar-link.custom-toolbar-link-style-white:link,
+#custom-toolbar-link.custom-toolbar-link-style-white:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-bold-white,
+#custom-toolbar-link.custom-toolbar-link-style-bold-white:link,
+#custom-toolbar-link.custom-toolbar-link-style-bold-white:visited {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-black,
+#custom-toolbar-link.custom-toolbar-link-style-black:link,
+#custom-toolbar-link.custom-toolbar-link-style-black:visited {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-dark,
+#custom-toolbar-link.custom-toolbar-link-style-dark:link,
+#custom-toolbar-link.custom-toolbar-link-style-dark:visited {
+    color: #111827 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-light,
+#custom-toolbar-link.custom-toolbar-link-style-light:link,
+#custom-toolbar-link.custom-toolbar-link-style-light:visited {
+    color: #f8fafc !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-muted-light,
+#custom-toolbar-link.custom-toolbar-link-style-muted-light:link,
+#custom-toolbar-link.custom-toolbar-link-style-muted-light:visited {
+    color: #e5e7eb !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-muted-dark,
+#custom-toolbar-link.custom-toolbar-link-style-muted-dark:link,
+#custom-toolbar-link.custom-toolbar-link-style-muted-dark:visited {
+    color: #374151 !important;
+    text-decoration: none !important;
+}
+
+/* Accent colours chosen to stay reasonably readable on light/dark themes when selected intentionally. */
+#custom-toolbar-link.custom-toolbar-link-style-blue,
+#custom-toolbar-link.custom-toolbar-link-style-blue:link,
+#custom-toolbar-link.custom-toolbar-link-style-blue:visited {
+    color: #2563eb !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-cyan,
+#custom-toolbar-link.custom-toolbar-link-style-cyan:link,
+#custom-toolbar-link.custom-toolbar-link-style-cyan:visited {
+    color: #0891b2 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-green,
+#custom-toolbar-link.custom-toolbar-link-style-green:link,
+#custom-toolbar-link.custom-toolbar-link-style-green:visited {
+    color: #16a34a !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-yellow,
+#custom-toolbar-link.custom-toolbar-link-style-yellow:link,
+#custom-toolbar-link.custom-toolbar-link-style-yellow:visited {
+    color: #facc15 !important;
+    text-decoration: none !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-orange,
+#custom-toolbar-link.custom-toolbar-link-style-orange:link,
+#custom-toolbar-link.custom-toolbar-link-style-orange:visited {
+    color: #f97316 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-red,
+#custom-toolbar-link.custom-toolbar-link-style-red:link,
+#custom-toolbar-link.custom-toolbar-link-style-red:visited {
+    color: #dc2626 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-purple,
+#custom-toolbar-link.custom-toolbar-link-style-purple:link,
+#custom-toolbar-link.custom-toolbar-link-style-purple:visited {
+    color: #9333ea !important;
+    text-decoration: none !important;
+}
+
+/* Common hover for text colour styles. */
+#custom-toolbar-link.custom-toolbar-link-style-white:hover,
+#custom-toolbar-link.custom-toolbar-link-style-white:focus,
+#custom-toolbar-link.custom-toolbar-link-style-bold-white:hover,
+#custom-toolbar-link.custom-toolbar-link-style-bold-white:focus,
+#custom-toolbar-link.custom-toolbar-link-style-black:hover,
+#custom-toolbar-link.custom-toolbar-link-style-black:focus,
+#custom-toolbar-link.custom-toolbar-link-style-dark:hover,
+#custom-toolbar-link.custom-toolbar-link-style-dark:focus,
+#custom-toolbar-link.custom-toolbar-link-style-light:hover,
+#custom-toolbar-link.custom-toolbar-link-style-light:focus,
+#custom-toolbar-link.custom-toolbar-link-style-muted-light:hover,
+#custom-toolbar-link.custom-toolbar-link-style-muted-light:focus,
+#custom-toolbar-link.custom-toolbar-link-style-muted-dark:hover,
+#custom-toolbar-link.custom-toolbar-link-style-muted-dark:focus,
+#custom-toolbar-link.custom-toolbar-link-style-blue:hover,
+#custom-toolbar-link.custom-toolbar-link-style-blue:focus,
+#custom-toolbar-link.custom-toolbar-link-style-cyan:hover,
+#custom-toolbar-link.custom-toolbar-link-style-cyan:focus,
+#custom-toolbar-link.custom-toolbar-link-style-green:hover,
+#custom-toolbar-link.custom-toolbar-link-style-green:focus,
+#custom-toolbar-link.custom-toolbar-link-style-yellow:hover,
+#custom-toolbar-link.custom-toolbar-link-style-yellow:focus,
+#custom-toolbar-link.custom-toolbar-link-style-orange:hover,
+#custom-toolbar-link.custom-toolbar-link-style-orange:focus,
+#custom-toolbar-link.custom-toolbar-link-style-red:hover,
+#custom-toolbar-link.custom-toolbar-link-style-red:focus,
+#custom-toolbar-link.custom-toolbar-link-style-purple:hover,
+#custom-toolbar-link.custom-toolbar-link-style-purple:focus {
+    text-decoration: none !important;
+    background: rgba(127, 127, 127, 0.18) !important;
+}
+
+/* Button presets. */
+#custom-toolbar-link.custom-toolbar-link-style-button,
+#custom-toolbar-link.custom-toolbar-link-style-button:link,
+#custom-toolbar-link.custom-toolbar-link-style-button:visited,
+#custom-toolbar-link.custom-toolbar-link-style-button-light,
+#custom-toolbar-link.custom-toolbar-link-style-button-light:link,
+#custom-toolbar-link.custom-toolbar-link-style-button-light:visited,
+#custom-toolbar-link.custom-toolbar-link-style-button-dark,
+#custom-toolbar-link.custom-toolbar-link-style-button-dark:link,
+#custom-toolbar-link.custom-toolbar-link-style-button-dark:visited {
+    font-weight: 700 !important;
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-button {
+    color: #ffffff !important;
+    margin: 0.35rem 0.35rem !important;
+    padding: 0.45rem 0.75rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    border-radius: 4px !important;
+    line-height: 1 !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-button-light {
+    color: #111827 !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    margin: 0.35rem 0.35rem !important;
+    padding: 0.45rem 0.75rem !important;
+    border: 1px solid rgba(17, 24, 39, 0.25) !important;
+    border-radius: 4px !important;
+    line-height: 1 !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-button-dark {
+    color: #ffffff !important;
+    background: rgba(17, 24, 39, 0.92) !important;
+    margin: 0.35rem 0.35rem !important;
+    padding: 0.45rem 0.75rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 4px !important;
+    line-height: 1 !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-style-button:hover,
+#custom-toolbar-link.custom-toolbar-link-style-button:focus,
+#custom-toolbar-link.custom-toolbar-link-style-button-light:hover,
+#custom-toolbar-link.custom-toolbar-link-style-button-light:focus,
+#custom-toolbar-link.custom-toolbar-link-style-button-dark:hover,
+#custom-toolbar-link.custom-toolbar-link-style-button-dark:focus {
+    filter: brightness(1.08) !important;
+}
+
+/* Font weight formatting. */
+#custom-toolbar-link.custom-toolbar-link-weight-normal { font-weight: normal !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-bold { font-weight: bold !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-lighter { font-weight: lighter !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-bolder { font-weight: bolder !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-100 { font-weight: 100 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-200 { font-weight: 200 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-300 { font-weight: 300 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-400 { font-weight: 400 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-500 { font-weight: 500 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-600 { font-weight: 600 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-700 { font-weight: 700 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-800 { font-weight: 800 !important; }
+#custom-toolbar-link.custom-toolbar-link-weight-900 { font-weight: 900 !important; }
+
+/* Italic formatting. */
+#custom-toolbar-link.custom-toolbar-link-italic-normal { font-style: normal !important; }
+#custom-toolbar-link.custom-toolbar-link-italic-italic { font-style: italic !important; }
+
+/* Underline formatting. */
+#custom-toolbar-link.custom-toolbar-link-underline-none,
+#custom-toolbar-link.custom-toolbar-link-underline-none:hover,
+#custom-toolbar-link.custom-toolbar-link-underline-none:focus {
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-underline-hover {
+    text-decoration: none !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-underline-hover:hover,
+#custom-toolbar-link.custom-toolbar-link-underline-hover:focus {
+    text-decoration: underline !important;
+}
+
+#custom-toolbar-link.custom-toolbar-link-underline-always,
+#custom-toolbar-link.custom-toolbar-link-underline-always:hover,
+#custom-toolbar-link.custom-toolbar-link-underline-always:focus {
+    text-decoration: underline !important;
+}
+
+/* Text case formatting. */
+#custom-toolbar-link.custom-toolbar-link-case-normal { text-transform: none !important; }
+#custom-toolbar-link.custom-toolbar-link-case-uppercase { text-transform: uppercase !important; }
+#custom-toolbar-link.custom-toolbar-link-case-lowercase { text-transform: lowercase !important; }
+#custom-toolbar-link.custom-toolbar-link-case-capitalize { text-transform: capitalize !important; }
+
+/* Size formatting. */
+#custom-toolbar-link.custom-toolbar-link-size-small { font-size: 0.9em !important; }
+#custom-toolbar-link.custom-toolbar-link-size-normal { font-size: 1em !important; }
+#custom-toolbar-link.custom-toolbar-link-size-large { font-size: 1.12em !important; }
+
+/* Position: center. Opt-in because it may overlap on narrow screens. */
+.custom-toolbar-link-centered-parent {
+    position: relative !important;
+}
+
+#custom-toolbar-link-item.custom-toolbar-link-centered {
+    position: absolute !important;
+    left: 50% !important;
+    top: 0 !important;
+    transform: translateX(-50%) !important;
+    z-index: 50 !important;
+}
+
+@media (max-width: 700px) {
+    #custom-toolbar-link-item.custom-toolbar-link-centered {
+        position: static !important;
+        transform: none !important;
+    }
+}
